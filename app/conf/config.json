@@ -1,0 +1,4 @@
+﻿{
+    "connectionString": "mongodb://localhost/JWT",
+    "secret": "Длинная строка для секретного ключа"
+}

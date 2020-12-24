@@ -61,7 +61,7 @@ function revokeToken(req, res, next) {
 
     // пользователи могут анулировать свои собственные токены, а администраторы могут анулировать любые токены
     if (!req.user.ownsToken(token) && req.user.role !== Role.Admin) {
-        return res.status(401).json({ message: 'Unauthorized' });
+        return res.status(401).json({ message: 'Неавторизованный пользователь' });
     }
 
     userService.revokeToken({ token, ipAddress })
@@ -97,11 +97,11 @@ function getRefreshTokens(req, res, next) {
         .catch(next);
 }
 
-// helper functions
+// Вспомогательные фун-и
 
 function setTokenCookie(res, token)
 {
-    // create http only cookie with refresh token that expires in 7 days
+    // создаем http-файл cookie только с Refresh Token, c сроком действия на 7 дней
     const cookieOptions = {
         httpOnly: true,
         expires: new Date(Date.now() + 7*24*60*60*1000)

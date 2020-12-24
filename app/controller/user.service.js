@@ -86,7 +86,7 @@ async function getRefreshTokens(userId) {
     return refreshTokens;
 }
 
-// вспомогательные
+// вспомогательные фун-и
 
 async function getUser(id) {
     if (!db.isValidId(id)) throw 'User not found';
